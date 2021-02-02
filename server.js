@@ -15,6 +15,10 @@ app.use(routes);
 // force: true means database connection must sync with the model definitions/associations.
 // force: true means the tables will re-create is there are any association changes
 // force: true is similar to DROP TABLE IF EXISTS
+// *** need to update to force: true when you add the relationships
+// once you turn on the server with sequelize.sync({ force: true }) and confirm the database tables were recreated,
+// switch back to using { force: false } and restart the server one more time just to make sure the changes took hold
+//  and you don't accidentally remove data!
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
