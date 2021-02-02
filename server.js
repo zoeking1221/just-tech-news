@@ -12,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
+// force: true means database connection must sync with the model definitions/associations.
+// force: true means the tables will re-create is there are any association changes
+// force: true is similar to DROP TABLE IF EXISTS
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
